@@ -63,4 +63,8 @@ fn main() {
     println!("{:?}", t);
     // let k = t.sent_messages.borrow().len();
     println!("Hello, world!");
+    let v: Vec<usize> = vec![1,2,3];
+    for (index, value) in v.iter().enumerate() {
+        println!("{} is at index {}", value, index);
+    }
 }
