@@ -8,7 +8,6 @@ fn iter_and_map() {
      * 즉, a.iter() 의 Iterator 와  a.iter().map() 이후의 Iterator 는 다른 Iterator 이다.
      */
     let mut iter = a.iter().map(|x| x + 1);
-
     assert_eq!(iter.next(), Some(2));
     println!("{:?}", a);
 }
@@ -17,11 +16,16 @@ fn iter_and_map() {
 fn iter_and_map_for_wrong() {
     // 이렇게하면 안되는 이유는, iter 라는 변수는 Iterator 를 가지고 있다.
     // 즉 원재료인 vec![1,2,3] 은 아무에게도 소유되고 있지 않아 free 되어 에러가 발생한다.
-    let iter = vec![1, 2, 3].iter().map(|x| x + 1);
-
-    while let Some(x) = iter.next() {
+    let vec = vec![1, 2, 3].iter().map(|x| x + 1);
+    // let iter2 = vec![1, 2, 3].iter().count();
+    while let Some(x) = vec.next() {
         println!("{}", x);
     }
+    // println!("{:?}", vec);
+
+    // while let Some(x) = iter.next() {
+    //     println!("{}", x);
+    // }
 }
 
 fn iter_and_map_for_good() {
@@ -68,5 +72,5 @@ fn fs_iterator_filter() {
 }
 
 fn main() {
-    fs_iterator_filter();
+    iter_and_map();
 }
